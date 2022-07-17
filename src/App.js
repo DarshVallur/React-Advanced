@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
-import ComponentC from './ComponentC';
-import { UserContext } from './userContext';
+import ErrorBoundary from './ErrorBoundary';
+import Hero from './Hero';
 
 class App extends Component {
   render() {
     return (
-      <UserContext.Provider value="Darshan">
-        <ComponentC />
-      </UserContext.Provider>
+      <div>
+        <ErrorBoundary>
+          <Hero heroName="Batman" />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <Hero heroName="Superman" />
+        </ErrorBoundary>
+        {/* <ErrorBoundary>
+          <Hero heroName="Joker" />
+        </ErrorBoundary> */}
+      </div>
     );
   }
 }

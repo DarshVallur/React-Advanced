@@ -1,8 +1,8 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Home from './components/Home.js';
-// import About from './components/About.js';
 import { AuthProvider } from './components/auth';
+import { RequiredAuth } from './components/RequiredAuth';
+import Home from './components/Home.js';
 import Navbar from './components/Navbar.js';
 import OrderSummary from './components/OrderSummary.js';
 import NoMatch from './components/NoMatch.js';
@@ -40,7 +40,14 @@ function App() {
           <Route path=":userId" element={<UserDetails />} />
           <Route path="admin" element={<Admin />} />
         </Route>
-        <Route path="profile" element={<Profile />}></Route>
+        <Route
+          path="profile"
+          element={
+            <RequiredAuth>
+              <Profile />
+            </RequiredAuth>
+          }
+        ></Route>
         <Route path="login" element={<Login />}></Route>
         <Route path="*" element={<NoMatch />}></Route>
       </Routes>

@@ -1,22 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useInput } from '../hooks/useInput';
 
-const Details = (props) => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+const Details = () => {
+  const [firstName, bindFirstName, resetFirstName] = useInput('');
+  const [lastName, bindLastName, resetLastName] = useInput('');
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    alert(`Hello ${firstName} ${lastName}`);
+    resetFirstName();
+    resetLastName();
+  };
   return (
     <div>
-      <label>First Name</label>
-      <input
-        type="text"
-        onChange={(e) => setFirstName(e.target.value)}
-        value={firstName}
-      />
-      <label>Last Name</label>
-      <input
-        type="text"
-        onChange={(e) => setLastName(e.target.value)}
-        value={lastName}
-      />
+      <form onSubmit={submitHandler}>
+        <div>
+          <label>First Name</label>
+          <input {...bindFirstName} type="text" />
+        </div>
+        <div>
+          <label>Last Name</label>
+          <input type="text" {...bindLastName} />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
     </div>
   );
 };

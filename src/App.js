@@ -1,7 +1,12 @@
 import React from 'react';
+import Details from './components/Details';
 
 function App() {
-  return <>Hello</>;
+  return (
+    <>
+      <Details />
+    </>
+  );
 }
 
 export default App;

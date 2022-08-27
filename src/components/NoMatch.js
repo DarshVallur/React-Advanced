@@ -1,4 +1,6 @@
 import React from 'react';
-export const NoMatch = () => {
+const NoMatch = () => {
   return <div>Page Not Found</div>;
 };
+
+export default NoMatch;
